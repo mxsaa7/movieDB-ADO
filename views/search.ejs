@@ -1,0 +1,36 @@
+<!-- Save this file with .ejs extension -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Movies - <%-title%></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<%- include('base') -%>
+<body class="bg-dark">
+    <!-- Navbar begins here -->
+    
+    
+
+    <!-- container begins here-->
+    <div class="container pt-5">
+        <!-- Jumbotron begins here -->
+        <div class="pt-5">
+            <div class="text-center text-warning p-3">
+                <h2>Search for movies, actors and directors</h2>
+            </div>
+            <div class="">
+                <form action="/result" method="GET" class="justify-content-center d-flex">
+                    <input type="text" name="search" class="form-control w-25 bg-dark text-white" placeholder="Search" >
+                    <input type="submit" class="btn btn-warning ml-2" value="Search">
+                </form>
+            </div>
+        </div>
+        <!-- jumbotron ends here -->
+    </div>
+    <!-- container ended here -->
+ 
+<!-- scripts begin here -->
+    <script src="/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
+</body>
+</html>
