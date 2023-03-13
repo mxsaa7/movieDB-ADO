@@ -8,8 +8,7 @@ const app = express();
 
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
 const SERVER_PORT = process.env.PORT;
-console.log(TMDB_API_KEY);
-console.log(SERVER_PORT);
+const TMDB_IMAGE_PATH = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/";
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -17,14 +16,14 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 
+app.listen(SERVER_PORT, ()=>{
+    console.log(`Server started on port: ${SERVER_PORT}`);
+})
+
 app.get('/', (req, res) => {
     res.render('search', {title:"Home"});
 })
 
-
-app.listen(SERVER_PORT, ()=>{
-    console.log(`Server started on port: ${SERVER_PORT}`);
-})
 
 app.get('/result', (req, res)=>{
     let query = req.query.search;
@@ -33,7 +32,7 @@ app.get('/result', (req, res)=>{
             console.log(error);
         }else{
             let data = JSON.parse(body);
-            res.render('result', {data:data, querySearch: query, title:"Results"});
+            res.render('result', {data:data, querySearch: query, title:"Results", image_path: TMDB_IMAGE_PATH});
         }
     })
 })
