@@ -28,7 +28,7 @@ app.listen(SERVER_PORT, ()=>{
     console.log(`Server started on port: ${SERVER_PORT}`);
 })
 
-//connectDB();
+connectDB();
 
 app.get('/', (req, res) => {
     res.render('search', {title:"Home"});

@@ -2,13 +2,15 @@ const { default: mongoose } = require('mongoose');
 
 require('dotenv').config();
 
-DEV_DB  = {
+const DEV_DB  = {
     HOST: process.env.HOST,
-    PORT: process.env.DB_PORT,
-    DB: process.env.DB
+    DB: process.env.DB,
+    USER: process.env.DB_USER,
+    PASS: process.env.DB_PASS
 }
 
-const db_uri = `mongodb://${DEV_DB.HOST}:${DEV_DB.PORT}//${DEV_DB.DB}`;
+const db_uri = `mongodb+srv://${DEV_DB.USER}:${DEV_DB.PASS}@${DEV_DB.HOST}/${DEV_DB.DB}`
+
 
 const connectDB = async () => {
     try {
