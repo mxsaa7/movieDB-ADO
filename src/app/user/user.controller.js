@@ -34,18 +34,27 @@ const loginUser = (async (req, res) => {
         
     if(user){
         if(password === user.password){
+            //generate session token
             res.json("home");
         }else{
             res.status(400).json({error: 'Password is incorrect'});
+            //display error in the UI
         }
     }else{
         res.status(400).json({error: "Username or email doesn't exist"});
+        //display error in the UI
     }
+})
+
+
+const logoutUser = (async (req, res) => {
+    //Add logout functionality
 })
 
 
 
 module.exports = {
     registerUser,
-    loginUser
+    loginUser, 
+    logoutUser
 }
