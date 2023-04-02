@@ -1,0 +1,16 @@
+[Ethan Garrick - 13:38 04/01]
+Folder Structure:?
+
+We need to give users the ability to add movies to their favorites list:
+This will result in a change/refactoring of our DB structure - possible ways to go about it:
+
+Adding a column to the 'users' collection that stores a list of favorites? 
+
+Adding a favorites collection with the user and movie PK 
+(user_id, movie_id)
+(   1   ,   200   ) 
+This approach may work more efficiently - We can follow a similar approach to that of 
+online shopping and a shopping cart.
+
+
+
