@@ -3,17 +3,16 @@ const path = require('path');
 const session = require('express-session');
 const request = require('request');
 const morgan = require('morgan');
-const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 const user_route = require(path.resolve('src/app/user/user.routes.js'));
 const connectDB = require(path.resolve('src/app/config/db/db.config.js'));
-
 const api_route = require("./src/api/api.routes.js")
 require("dotenv").config();
 
 
 const app = express();
 
-
+app.use(cookieParser());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(morgan('tiny'));
