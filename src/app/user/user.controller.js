@@ -22,9 +22,6 @@ const registerUser = (async (req, res) => {
    }
    
 
-
-
-
 })
 
 
@@ -35,13 +32,14 @@ const loginUser = (async (req, res) => {
     if(user){
         if(bcrypt.compare(password, user.password)){
             //generate session token
-            req.session.user = {
+            const session = req.session;
+            session.user = {
                 name: user.name,
                 userid: user.id, 
                 username: user.username, 
                 email: user.email
             }
-            res.json(req.session.user);
+            res.json(req.session);
         }else{
             res.status(400).json({error: 'Password is incorrect'});
             //display error in the UI
@@ -55,6 +53,10 @@ const loginUser = (async (req, res) => {
 
 const logoutUser = (async (req, res) => {
     //Add logout functionality
+    const username = req.session.user.username;
+    req.session.destroy();
+    res.json("Logged out, " + username);
+    
 })
 
 
