@@ -4,9 +4,8 @@ const TMDB_API_KEY = process.env.TMDB_API_KEY
 const TMDB_IMAGE_PATH = process.env.TMDB_IMAGE_PATH;
 
 
-
 const searchMovie = ((req, res) => {
-    res.json("search here")
+    res.render('search', {title:"Search"});
 })
 
 const getResults = ((req, res) => {
