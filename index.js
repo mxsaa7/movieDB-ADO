@@ -19,7 +19,7 @@ app.set('view engine', 'ejs');
 app.use(morgan('tiny'));
 
 app.use(session({
-    secret: "123456", 
+    secret: process.env.SESSION_SECRET, 
     saveUninitialized: true, 
     cookie: {maxAge: 20 * 40 * 60 * 1000}, 
     resave: false
