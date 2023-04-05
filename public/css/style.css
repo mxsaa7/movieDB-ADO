@@ -1,0 +1,7 @@
+.register, .login{ 
+  background-image: url('../images/movie.jpg');  
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.85;
+}
+

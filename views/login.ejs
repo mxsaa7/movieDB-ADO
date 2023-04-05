@@ -1,0 +1,46 @@
+<html>
+    <title>Test</title>
+    <header>
+    </header>
+    <%- include('base') -%>
+    <body class="login">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-sm"></div>
+                <div class="col-sm">
+                    <div style="width: 23rem;" class="card pt-3 bg-dark bg-gradient" >
+                        <div class="card-body">
+                            <form action="/user/login" method="POST" class="justify-content-center">
+
+                                <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
+                    
+                                <div class="form-outline mb-4">
+                                  <input type="username" name="username"  placeholder="Username" class="form-control form-control" />
+                                </div>
+                    
+                                <div class="form-outline mb-4">
+                                  <input type="password" name="password" placeholder="Password" class="form-control form-control" />
+                                </div>
+                    
+                                <div class="pt-1 mb-4">
+                                  <button class="btn btn-info btn btn-block" type="submit">Login</button>
+                                </div>
+                    
+                                <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
+                                <p>Don't have an account? <a href="/user/register" class="link-info">Register here</a></p>             
+                            </form>
+                        </div>          
+                    </div>
+
+                </div>
+                <div class="col-sm"></div>
+            </div>
+        </div>
+
+        
+     
+    <!-- scripts begin here -->
+        <script src="/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
+
+    </body>
+</html>
