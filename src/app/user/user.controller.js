@@ -1,31 +1,54 @@
 const User = require('./user.js');
 const bcrypt = require('bcrypt');
+const { check, body, validationResult } = require('express-validator');
 
 
-const registerUser = (async (req, res) => {
-   const { name, username, email, password } = req.body;
-   const user = await User.findOne({username: username});
-   if(user){
-    
-        res.status(400).json({error: "User already exists"});
+const registerUser = (async (req, res, next) => {
 
-   }else{
 
-        const hash_password = await bcrypt.hash(password, 10)
-        User.create({
-            name:name, 
-            username: username, 
-            email:email, 
-            password:hash_password
-        });
-        res.status(200).json({message: "Success"});
-   }
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        console.log(errors);
+       errors.array().forEach(error => {
+            req.flash('error', error.msg)
+       })
+       res.render('register', {errors: req.flash(), title: "Create an Account"})
+       return;
+
+    }
+
+    res.redirect('/user/register')
+
+        // const { name, username, email, password } = req.body;
+   
+
+        // const hash_password = await bcrypt.hash(password, 10)
+        // User.create({
+        //     name:name, 
+        //     username: username, 
+        //     email:email, 
+        //     password:hash_password
+        // });
+        // res.status(200).json({message: "Success"});
+   
    
 
 })
 
 
 const loginUser = (async (req, res) => {
+
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        console.log(errors);
+       errors.array().forEach(error => {
+            req.flash('error', error.msg)
+       })
+       res.render('login', {errors: req.flash(), title: "Login"})
+       return;
+
+    }
+
     const {username, password} = req.body;
     const user = await User.findOne({username: username});
         
@@ -71,7 +94,9 @@ const loginPage = (async (req, res) => {
 })
 
 const registerPage = (async (req, res) => {
-    res.render('register', {title:"Create an account"});
+    session = req.session;
+    res.render('register', {title: "Create an Account", errors:req.session.errors});
+    req.session.errors=null;
 })
 
 

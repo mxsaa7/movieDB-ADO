@@ -1,5 +1,7 @@
 const express = require("express")
+const validator = require('./user.validator');
 const router = express.Router();
+const { check, body, validationResult } = require('express-validator');
 
 
 const {
@@ -12,9 +14,9 @@ const {
 
 } = require('./user.controller.js')
 
-router.post('/register', registerUser)
+router.route('/register').post(validator.validateRegistration, registerUser)
 
-router.post('/login', loginUser)
+router.route('/login').post(validator.validateLogin, loginUser)
 
 router.get('/logout', logoutUser)
 

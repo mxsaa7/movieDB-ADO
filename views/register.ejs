@@ -11,8 +11,16 @@
                 <div class="col-sm"></div>
                 <div class="col-sm">
                     <div style="width: 25rem;" class="card pt-3 bg-dark bg-gradient" >
+                        <% if(locals.errors) { Object.keys(errors).forEach(key => { %>
+                            <% errors[key].forEach((error) => { %>
+                            <div class="alert alert-danger" role="alert">
+                                    <%= error %>
+                              </div>
+                        <% }) %>
+                        <% }) %>
+                        <% } %>
                         <div class="card-body">
-                            <form class="justify-content-center">
+                            <form class="justify-content-center" action="/user/register" method="POST">
 
                                 <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Create a new account</h3>
 
@@ -35,7 +43,7 @@
                                   </div>
                     
                                 <div class="pt-1 mb-4">
-                                  <button class="btn btn-info btn btn-block" type="button">Login</button>
+                                  <button class="btn btn-info btn btn-block" type="submit">Register</button>
                                 </div>
                     
                                 <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Add clever text</a></p>

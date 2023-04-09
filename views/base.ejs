@@ -28,10 +28,15 @@
                 </ul>
 
                 <% if(session.username){ %>
-                    <span class="navbar-text">
-                        <div class="btn-group">
-                            <a href="/user/logout" class="btn btn-dark">Logout</a>
-                        </div>
+                    <span class="navbar-text dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <%=session.username%>
+                        </a>
+                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="#">Favorites</a>
+                            <a class="dropdown-item" href="/user/logout">Logout</a>
+                          </div>
                     </span>
                 <% } else { %>
                     <span class="navbar-text">

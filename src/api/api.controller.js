@@ -9,6 +9,7 @@ const searchMovie = ((req, res) => {
 })
 
 const getResults = ((req, res) => {
+    session = req.session;
     let query = req.query.search;
     request(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&language=en-US&page=1&include_adult=false&query=` + query, (error, response, body)=>{
         if(error){
@@ -21,6 +22,7 @@ const getResults = ((req, res) => {
 })
 
 const getNowPlaying = ((req, res) => {
+    session = req.session;
     request(`https://api.themoviedb.org/3/movie/now_playing?api_key=${TMDB_API_KEY}&language=en-US&page=1`, (error, response, body)=>{
         if(error){
             console.log("Error Message: " + error);
@@ -32,6 +34,7 @@ const getNowPlaying = ((req, res) => {
 })
 
 const getPopular = ((req, res) => {
+    session = req.session;
     request(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDB_API_KEY}&language=en-US&page=1&include_adult=true`,(error, response, body) => {
         if(error){
             console.log(error);

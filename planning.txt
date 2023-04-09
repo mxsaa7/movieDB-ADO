@@ -12,5 +12,25 @@ Adding a favorites collection with the user and movie PK
 This approach may work more efficiently - We can follow a similar approach to that of 
 online shopping and a shopping cart.
 
-
+(
+    [ body('email', "Invalid email address").isEmail().normalizeEmail(), 
+        body('email').custom(async email => {
+            return await User.findOne({email: email}).then(user => {
+                if (user){
+                    return Promise.reject('Email is already in use');
+                }
+            })
+        }), 
+        body('username').custom(async username => {
+            return await User.findOne({username: username}).then(user => {
+                return Promise.reject('Username is already in use');
+            })
+        }), 
+        body('password').custom((password, {req}) => {
+            if(password !== req.body.confirmpassword){
+                throw new Error('Passwords do not match');
+            }
+        }),
+        body('password').isLength({min:8})], 
+                                            (req, res, next) => {
 
