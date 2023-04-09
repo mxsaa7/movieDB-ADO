@@ -1,13 +1,13 @@
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
-const request = require('request');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const user_route = require(path.resolve('src/app/user/user.routes.js'));
 const connectDB = require(path.resolve('src/app/config/db/db.config.js'));
 const api_route = require("./src/api/api.routes.js")
+const flash = require('connect-flash')
 require("dotenv").config();
 
 
@@ -19,6 +19,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, '/public')));
 app.set('view engine', 'ejs');
 app.use(morgan('tiny'));
+app.use(flash());
+
 
 app.use(session({
     secret: process.env.SESSION_SECRET, 

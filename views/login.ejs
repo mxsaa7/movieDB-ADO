@@ -9,6 +9,14 @@
                 <div class="col-sm"></div>
                 <div class="col-sm">
                     <div style="width: 23rem;" class="card pt-3 bg-dark bg-gradient" >
+                        <% if(locals.errors) { Object.keys(errors).forEach(key => { %>
+                            <% errors[key].forEach((error) => { %>
+                            <div class="alert alert-danger" role="alert">
+                                    <%= error %>
+                              </div>
+                        <% }) %>
+                        <% }) %>
+                        <% } %>
                         <div class="card-body">
                             <form action="/user/login" method="POST" class="justify-content-center">
 
