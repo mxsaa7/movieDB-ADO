@@ -17,19 +17,17 @@ const registerUser = (async (req, res, next) => {
 
     }
 
-    res.redirect('/user/register')
+    const { name, username, email, password } = req.body;
 
-        // const { name, username, email, password } = req.body;
-   
 
-        // const hash_password = await bcrypt.hash(password, 10)
-        // User.create({
-        //     name:name, 
-        //     username: username, 
-        //     email:email, 
-        //     password:hash_password
-        // });
-        // res.status(200).json({message: "Success"});
+    const hash_password = await bcrypt.hash(password, 10)
+    User.create({
+        name:name, 
+        username: username, 
+        email:email, 
+        password:hash_password
+        });
+        res.redirect("/user/login");
    
    
 
@@ -60,15 +58,9 @@ const loginUser = (async (req, res) => {
             session.name = user.name;
             session.email = user.email;
             session.save(function() {
-                res.redirect("/user/login");
+                res.redirect("/");
             });
-        }else{
-            res.status(400).json({error: 'Password is incorrect'});
-            //display error in the UI
         }
-    }else{
-        res.status(400).json({error: "Username or email doesn't exist"});
-        //display error in the UI
     }
 })
 
