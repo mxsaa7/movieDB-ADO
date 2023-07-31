@@ -4,8 +4,7 @@
   "description": "Using API from TMDB to retrieve movies",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "build": "webpack"
+    "start": "node index.js"
   },
   "keywords": [
     "NODEJS",
