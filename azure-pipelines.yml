@@ -12,10 +12,10 @@ variables:
   azureSubscription: '3a069830-76ef-419e-822d-67ebf019f39e'
 
   # Web app name
-  webAppName: 'supportech'
+  webAppName: 'mviedb'
 
   # Environment name
-  environmentName: 'supportech'
+  environmentName: 'mviedb'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
