@@ -26,26 +26,6 @@
                         <a class="nav-link" href="/tmdb/popular">Popular Movies</a>
                     </li>
                 </ul>
-
-                <% if(session.username){ %>
-                    <span class="navbar-text dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <%=session.username%>
-                        </a>
-                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Profile</a>
-                            <a class="dropdown-item" href="#">Favorites</a>
-                            <a class="dropdown-item" href="/user/logout">Logout</a>
-                          </div>
-                    </span>
-                <% } else { %>
-                    <span class="navbar-text">
-                        <div class="btn-group">
-                            <a href="/user/login" class="btn btn-dark">Login</a>
-                            <a href="/user/register" class="btn btn-info">Register</a>
-                        </div>
-                    </span>
-                <% } %>
             </div>
         </nav>
         
