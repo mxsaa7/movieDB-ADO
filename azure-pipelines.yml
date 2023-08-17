@@ -40,6 +40,9 @@ stages:
         npm run build --if-present
         npm run test --if-present
       displayName: 'npm install, build and test'
+      env:
+        TMDB_API_KEY: $(TMDB_API_KEY)
+        TMDB_IMAGE_PATH: $(TMDB_IMAGE_PATH)
 
     - task: ArchiveFiles@2
       displayName: 'Archive files'
